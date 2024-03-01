@@ -1,0 +1,63 @@
+Crear una nueva carpeta para el proyecto y navegar a ella:
+
+bash
+Copy code
+mkdir mi-proyecto-ts
+cd mi-proyecto-ts
+Inicializar un nuevo proyecto de Yarn:
+
+bash
+Copy code
+yarn init -y
+Agregar TypeScript y los tipos de Node.js como dependencias de desarrollo:
+
+bash
+Copy code
+yarn add typescript @types/node --dev
+Crear un archivo de configuración de TypeScript (tsconfig.json):
+
+bash
+Copy code
+npx tsc --init
+Crear una estructura de directorios para el código fuente y las pruebas:
+
+bash
+Copy code
+mkdir src tests
+Agregar Jest y configurar el entorno de pruebas:
+
+bash
+Copy code
+yarn add jest @types/jest ts-jest --dev
+npx ts-jest config:init
+Modificar package.json para incluir un script de prueba:
+Debes agregar manualmente la siguiente sección de scripts al archivo package.json si aún no está presente:
+
+json
+Copy code
+"scripts": {
+  "test": "jest"
+}
+Desactivar la caché global de Yarn y configurar el enlazador de módulos de nodo:
+
+bash
+Copy code
+yarn config set enableGlobalCache false
+yarn config set nodeLinker node-modules
+Eliminar cualquier archivo de estado de PnP y el archivo de bloqueo de Yarn:
+
+bash
+Copy code
+rm -f .pnp.*
+rm -f yarn.lock
+Reinstalar todas las dependencias:
+
+bash
+Copy code
+yarn install
+Ejecutar las pruebas para verificar que todo está configurado correctamente:
+
+bash
+Copy code
+yarn test
+Con estos comandos, deberías ser capaz de configurar un nuevo proyecto TypeScript con Yarn y Jest, y también resolver cualquier problema relacionado con Yarn PnP que pueda surgir durante la instalación y ejecución de Jest.
