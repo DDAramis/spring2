@@ -1,10 +1,44 @@
-import { hello, ValorColor, CombinarColores } from '../src/colores';
+import { hello, ValorColor, CombinarColores, thorttle } from '../src/colores';
 
 test('says hello world', () => {
     expect(hello()).toEqual('Hello, World')
 });
 
 
+describe('Función CombinarColores con thorttle', () => {
+
+    jest.useFakeTimers();
+
+    test('thorttle limita llamadas a CombinarColores', () => {
+        const mockCombinarColores = jest.fn(CombinarColores);
+        const throttledCombinar = thorttle(mockCombinarColores, 1000);
+
+      
+        throttledCombinar(['Red', 'Blue']);
+        throttledCombinar(['Green', 'Violet']);
+
+      
+        jest.advanceTimersByTime(500);
+
+        
+        expect(mockCombinarColores).toHaveBeenCalledTimes(1);
+
+        
+        jest.advanceTimersByTime(1000);
+
+        
+        throttledCombinar(['Yellow', 'Black']);
+        jest.advanceTimersByTime(1000); 
+
+       
+        expect(mockCombinarColores).toHaveBeenCalledTimes(2);
+    });
+
+    
+    afterAll(() => {
+        jest.useRealTimers();
+    });
+});
 
 
 describe('Función ValorColor', () => {

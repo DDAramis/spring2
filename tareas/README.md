@@ -19,6 +19,10 @@ la funcion espera un valor de retorno tipo string.
     en caso de  que el tecnico decida 
     cambiar los valores de la bnda de calores.
 
+FTR -Aqui agregaremos la funcion throttle, para que el
+usuario al seleccionar click, mas de una vez en el color, 
+no sobre cargue la pagina.
+
 6- Aqui verificaré que el codigo se ejecute,una vez
 haya seleccionado el color con el wait, 
 si no, el temporizador se reinicaria.
